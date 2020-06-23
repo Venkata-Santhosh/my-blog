@@ -9,6 +9,7 @@ workflows:
     jobs:
       - build
       - test
+      - deploy
 jobs:
   build:
     executor: node
@@ -22,3 +23,14 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run test
+  deploy:
+    executor: node
+    steps:
+      - add_ssh_keys:
+        fingerprints:
+          - "37:2e:93:9a:18:89:98:5c:86:ca:68:a4:9e:99:0b:1a"
+      - checkout
+      - run:
+        name: deploy-gh-pages
+        command: ./bin/deploy
+
