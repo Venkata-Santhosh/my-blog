@@ -46,7 +46,7 @@ jobs:
           <<: *cache-options
       - run:
           name: deploy-gh-pages
-          command: ./bin/deploy
+          command: /bin/deploy
 
 
 workflows:
