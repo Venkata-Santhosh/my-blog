@@ -5,7 +5,6 @@ set -ex
 cd "$(dirname "$0")"
 cd ..
 
-echo "hello"
 
 GIT_REMOTE=$(git config remote.origin.url)
 GIT_USER_NAME='Deploy Robot'
@@ -18,9 +17,7 @@ timeout 60 ./node_modules/.bin/next build
 
 touch ./out/.nojekyll
 cp .gitignore ./out/.gitignore
-cp CNAME ./out/CNAME
 mkdir ./out/.circleci && cp .circleci/config.yml ./out/.circleci/config.yml
-echo "hello"
 
 # make a directory to put the gh-pages branch
 mkdir gh-pages-branch
