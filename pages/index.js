@@ -12,12 +12,8 @@ const Home = ({posts}) => {
 
       <main>
         <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Venkata Santhosh Piduri
         </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
 
         <div className="grid">
           {
