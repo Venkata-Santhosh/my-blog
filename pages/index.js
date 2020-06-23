@@ -23,7 +23,7 @@ const Home = ({posts}) => {
           {
             posts.map(post => {
              return( 
-                <Link key={post} href={"/blog/" + post} className="card">
+                <Link key={post} href={process.env.BACKEND_URL+"/blog/" + post} className="card">
                   <a>{"/blog/" + post} &rarr;</a>
                 </Link>
               );
