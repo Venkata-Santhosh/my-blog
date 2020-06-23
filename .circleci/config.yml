@@ -32,6 +32,9 @@ jobs:
             - "37:2e:93:9a:18:89:98:5c:86:ca:68:a4:9e:99:0b:1a"
       - checkout
       - run:
+          name: npm-install
+          command: npm install
+      - run:
           name: deploy-gh-pages
           command: sh ./bin/deploy.sh
 
