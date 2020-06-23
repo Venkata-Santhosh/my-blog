@@ -1,0 +1,62 @@
+version: 2
+
+references:
+  ignored-branches: &ignored-branches
+     branches:
+      ignore:
+        - gh-pages
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - run:
+          name: npm-install
+          command: npm install
+
+  test:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - run: npm run test
+
+  deploy:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "2a:81:b1:e2:e6:3c:bf:f1:eb:b8:07:d7:97:c3:91:16"
+      - checkout
+      - run:
+          name: npm-install
+          command: npm install
+      - run:
+          name: deploy-gh-pages
+          command: sh ./bin/deploy.sh
+
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build:
+          filters:
+            <<: *ignored-branches
+
+      - test:
+          filters:
+            <<: *ignored-branches
+          requires:
+            - build
+
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - test
