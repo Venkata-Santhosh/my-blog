@@ -29,7 +29,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "37:2e:93:9a:18:89:98:5c:86:ca:68:a4:9e:99:0b:1a"
+            - "2a:81:b1:e2:e6:3c:bf:f1:eb:b8:07:d7:97:c3:91:16"
       - checkout
       - run:
           name: npm-install
