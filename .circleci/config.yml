@@ -6,9 +6,6 @@ references:
       ignore:
         - gh-pages
 
-  cache-options: &cache-options
-    key: package-cache-{{ checksum "package.json" }}
-
 jobs:
   build:
     docker:
@@ -20,18 +17,12 @@ jobs:
       - run:
           name: npm-install
           command: npm install
-      - save_cache:
-          <<: *cache-options
-          paths:
-            - ./node_modules
 
   test:
     docker:
       - image: circleci/node:12
     steps:
       - checkout
-      - restore_cache:
-          <<: *cache-options
       - run: npm run test
 
   deploy:
@@ -42,11 +33,9 @@ jobs:
           fingerprints:
             - "37:2e:93:9a:18:89:98:5c:86:ca:68:a4:9e:99:0b:1a"
       - checkout
-      - restore_cache:
-          <<: *cache-options
       - run:
           name: deploy-gh-pages
-          command: /bin/deploy
+          command: ./bin/deploy
 
 
 workflows:
