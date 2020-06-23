@@ -33,7 +33,7 @@ jobs:
       - checkout
       - run:
           name: deploy-gh-pages
-          command: ./bin/deploy
+          command: sh ./bin/deploy.sh
 
 
 workflows:
