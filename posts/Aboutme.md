@@ -7,4 +7,4 @@
 # Sample ABout me
 
 
-![Incentive Service - Inventory Services flow](/images/Inventory-services-flow.png "Inventory Services Flow diagram")
+![Incentive Service - Inventory Services flow](/public/images/Inventory-services-flow.png "Inventory Services Flow diagram")
