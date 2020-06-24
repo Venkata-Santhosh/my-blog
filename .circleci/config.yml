@@ -6,14 +6,10 @@ references:
       ignore:
         - gh-pages
 
-executors:
-  node:
-    docker:
-      - image: circleci/node:10
-
 jobs:
   build:
-    executor: node
+    docker:
+      - image: circleci/node:12
     steps:
       - checkout
       - run:
@@ -21,18 +17,23 @@ jobs:
           command: npm install
 
   test:
-    executor: node
+    docker:
+      - image: circleci/node:12
     steps:
       - checkout
       - run: npm run test
 
   deploy:
-    executor: node
+    docker:
+      - image: circleci/node:12
     steps:
       - add_ssh_keys:
           fingerprints:
             - "2a:81:b1:e2:e6:3c:bf:f1:eb:b8:07:d7:97:c3:91:16"
       - checkout
+      - run:
+          name: npm-install
+          command: npm install
       - run:
           name: deploy-gh-pages
           command: sh ./bin/deploy.sh
