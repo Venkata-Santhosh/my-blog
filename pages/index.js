@@ -6,8 +6,7 @@ const Home = ({posts}) => {
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Blog Posts</title>
       </Head>
 
       <main>
@@ -19,8 +18,8 @@ const Home = ({posts}) => {
           {
             posts.map(post => {
              return( 
-                <Link key={post} href={process.env.BACKEND_URL+"/blog/" + post} className="card">
-                  <a>{"/blog/" + post} &rarr;</a>
+                <Link key={post} href={process.env.BACKEND_URL+"/blog/" + post} >
+                  <a className="card">{post} &rarr;</a>
                 </Link>
               );
             })
@@ -189,7 +188,7 @@ export const getStaticProps = async () => {
       posts : files.map(filename=> filename.replace(".md",""))
     }
   }
-}
+};
 
 
 export default Home;

@@ -12,7 +12,6 @@ const Post = ({htmlString, data}) => {
                 <title>{data.title}</title>
             </Head>
             <div>
-                <div>content below</div>
                 <div dangerouslySetInnerHTML={{__html: htmlString}}></div>
             </div>
         </>
